@@ -1,0 +1,12 @@
+﻿@using WebAppAspNetMvcCodeFirst.Models
+@model Author
+
+<h3>Автор</h3>
+
+@using (Html.BeginForm("Create", "Authors", FormMethod.Post))
+{
+    @Html.EditorForModel()
+
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Отменить", "Index", "Authors")
+}

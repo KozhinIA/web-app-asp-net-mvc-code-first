@@ -1,0 +1,52 @@
+﻿@using WebAppAspNetMvcCodeFirst.Models
+@using WebAppAspNetMvcCodeFirst.Extensions
+@model List<Author>
+
+<h3>Авторы</h3>
+
+@Html.ActionLink("Добавить запись", "Create", "Authors")
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Имя
+            </th>
+            <th>
+                Фамилия
+            </th>
+            <th>
+                Пол
+            </th>
+            <th>
+                День рождения
+            </th>
+            <th>
+                Действия
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+        <tr>
+            <td>
+                @author.FirestName
+            </td>
+            <td>
+                @author.LastName
+            </td>
+            <td>
+                @author.Gender.GetDisplayValue()
+            </td>
+            <td>
+                @(author.Birthday.HasValue? author.Birthday.Value.ToString("dd-MM-yyyy") : "-")
+            </td>
+            <td>
+                @Html.ActionLink("Удалить", "Delete", "Authors", new { id = author.Id }, new { })
+                @Html.ActionLink("Изменить", "Edit", "Authors", new { id = author.Id }, new { })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

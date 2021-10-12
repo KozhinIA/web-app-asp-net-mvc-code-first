@@ -1,0 +1,13 @@
+﻿@using WebAppAspNetMvcCodeFirst.Models
+@model Genre
+
+<h3>Жанр</h3>
+
+@using (Html.BeginForm("Edit", "Genres", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    @Html.EditorForModel()
+
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Отменить", "Index", "Genres")
+}

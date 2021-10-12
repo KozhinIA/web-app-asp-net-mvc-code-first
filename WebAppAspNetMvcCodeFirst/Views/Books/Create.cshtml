@@ -1,0 +1,11 @@
+﻿@using WebAppAspNetMvcCodeFirst.Models
+@model Book
+
+<h3>Книга</h3>
+
+@using (Html.BeginForm("Create", "Books", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.EditorForModel()
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Отменить", "Index", "Books")
+}

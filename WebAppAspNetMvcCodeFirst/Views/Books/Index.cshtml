@@ -1,0 +1,63 @@
+﻿@using WebAppAspNetMvcCodeFirst.Models
+@model List<Book>
+
+<h3>Книги</h3>
+
+@Html.ActionLink("Добавить запись", "Create", "Books")
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Обложка
+            </th>
+            <th>
+                Название
+            </th>
+            <th>
+                Автор(ы)
+            </th>
+            <th>
+                ISBN
+            </th>
+            <th>
+                Год издания книги
+            </th>
+            <th>
+                Дата создания записи
+            </th>
+            <th>
+                Действия
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>
+                    <img src="/Books/GetImage/@book.Id" style="max-width: 100px; max-height: 200px;" />
+                </td>
+                <td>
+                    @book.Name
+                </td>
+                <td>
+                    @string.Join(", ", book.Authors.Select(x=> $"{x.LastName} {x.FirestName}"))
+                </td>
+                <td>
+                    @book.Isbn
+                </td>
+                <td>
+                    @book.Year
+                </td>
+                <td>
+                    @book.CreateAt.ToString("dd-MM-yyyy HH:mm:ss")
+                </td>
+                <td>
+                    @Html.ActionLink("Удалить", "Delete", "Books", new { id = book.Id }, new { })
+                    @Html.ActionLink("Изменить", "Edit", "Books", new { id = book.Id }, new { })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

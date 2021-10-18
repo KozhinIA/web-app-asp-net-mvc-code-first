@@ -127,7 +127,8 @@ namespace WebAppAspNetMvcCodeFirst.Controllers
             if (sourse.BookImageFile != null)
             {
                 var image = db.BookImages.FirstOrDefault(x => x.Id == sourse.Id);
-                db.BookImages.Remove(image);
+                if (image != null)
+                    db.BookImages.Remove(image);
 
                 var data = new byte[sourse.BookImageFile.ContentLength];
                 sourse.BookImageFile.InputStream.Read(data, 0, sourse.BookImageFile.ContentLength);

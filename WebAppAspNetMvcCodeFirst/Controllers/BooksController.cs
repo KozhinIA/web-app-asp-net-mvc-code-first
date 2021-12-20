@@ -74,8 +74,7 @@ namespace WebAppAspNetMvcCodeFirst.Controllers
 
             return RedirectPermanent("/Books/Index");
         }
-
-
+        
         [HttpGet]
         public ActionResult Edit(int id)
         {
